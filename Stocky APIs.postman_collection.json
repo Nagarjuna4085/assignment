@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "c065b38b-50fe-4743-a923-80b3187a793a",
+		"name": "Stocky APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12661119"
+	},
+	"item": [
+		{
+			"name": "reward",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"event_id\": \"evt-3\",\r\n  \"user_id\": \"user_1\",\r\n  \"stock_symbol\": \"INFY\",\r\n  \"quantity\": 0.75,\r\n  \"timestamp\": \"2025-12-17T09:15:00Z\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/reward",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reward"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"event_id\": \"evt-3\",\r\n  \"user_id\": \"user_1\",\r\n  \"stock_symbol\": \"INFY\",\r\n  \"quantity\": 0.75,\r\n  \"timestamp\": \"2025-12-17T09:15:00Z\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/reward",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reward"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 Dec 2025 07:33:15 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "37"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"duplicate event ignored\"\n}"
+				},
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"event_id\": \"evt-5\",\r\n  \"user_id\": \"user_2\",\r\n  \"stock_symbol\": \"INFY\",\r\n  \"quantity\": 0.75,\r\n  \"timestamp\": \"2025-12-17T09:15:00Z\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/reward",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reward"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 Dec 2025 07:40:16 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "20"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/today-stocks/user_1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/today-stocks/user_1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"today-stocks",
+						"user_1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/today-stocks/user_1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"today-stocks",
+								"user_1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 Dec 2025 07:39:16 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "466"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"date\": \"2025-12-18\",\n    \"rewards\": [\n        {\n            \"ID\": \"8e65a889-ec9c-4d8e-aef2-6dc0f9e5ac87\",\n            \"EventID\": \"evt-1\",\n            \"UserID\": \"user_1\",\n            \"StockSymbol\": \"RELIANCE\",\n            \"Quantity\": 1.25,\n            \"RewardedAt\": \"2025-12-18T05:30:00-05:00\",\n            \"CreatedAt\": \"2025-12-18T02:26:32.537592-05:00\"\n        },\n        {\n            \"ID\": \"ab944bd5-5af7-43ef-a518-86cb61ac28f2\",\n            \"EventID\": \"evt-2\",\n            \"UserID\": \"user_1\",\n            \"StockSymbol\": \"TCS\",\n            \"Quantity\": 2,\n            \"RewardedAt\": \"2025-12-18T06:00:00-05:00\",\n            \"CreatedAt\": \"2025-12-18T02:27:28.850571-05:00\"\n        }\n    ],\n    \"user_id\": \"user_1\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/historical-inr/user_1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/historical-inr/user_1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"historical-inr",
+						"user_1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/historical-inr/user_1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"historical-inr",
+								"user_1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 Dec 2025 07:39:34 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "33"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"history\": {},\n    \"user_id\": \"user_1\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/stats/user_1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/stats/user_1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stats",
+						"user_1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stats/user_1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stats",
+								"user_1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 Dec 2025 07:39:49 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "94"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"current_portfolio_inr\": 4468.07,\n    \"today_rewards\": {\n        \"RELIANCE\": 1.25,\n        \"TCS\": 2\n    },\n    \"user_id\": \"user_1\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/portfolio/user_1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/portfolio/user_1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"portfolio",
+						"user_1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/portfolio/user_1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"portfolio",
+								"user_1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 Dec 2025 07:36:41 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "90"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"portfolio\": {\n        \"INFY\": 0.75,\n        \"RELIANCE\": 1.25,\n        \"TCS\": 2\n    },\n    \"total_inr\": 4468.07,\n    \"user_id\": \"user_1\"\n}"
+				}
+			]
+		}
+	]
+}
