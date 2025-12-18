@@ -1,19 +1,13 @@
 # Stocky Assignment
 
-A stock reward system built using Golang, Gin, PostgreSQL.
 
-## Features
-- Stock reward APIs
-- Double-entry ledger
-- Hourly mock price updates
-- Idempotency handling
-- Portfolio valuation
+## API Specifications (Request/Response)
 
+### 1. POST `/reward`
 
+**Request:**
 
-## API specifications (request/response payloads)
-1. POST /reward
-Request:
+```json
 {
   "event_id": "evt-1",
   "user_id": "user_1",
@@ -21,22 +15,27 @@ Request:
   "quantity": 1.25,
   "timestamp": "2025-12-18T10:30:00Z"
 }
-Response:
+```
+**Response:**
+```json
 {
   "status": "success"
 }
-Duplicate event handling: If the same event_id is submitted again:
-
+```
+Duplicate event handling:
+```json
 {
   "message": "duplicate event ignored"
 }
+```
 
-2.GET /today-stocks/{userId}
-Request :
+
+### 2. GET /today-stocks/`{userId}`
+
+**Request:** 
 /today-stocks/user_1
-
-Response:
-
+- **Response**
+```json
 {
   "user_id": "user_1",
   "date": "2025-12-18",
@@ -51,14 +50,15 @@ Response:
     }
   ]
 }
+```
 
 
+### 3. GET /historical-inr/`{userId}`
 
-3.GET /historical-inr/{userId}
-Request : 
-/historical-inr/user_1
+**Request:** /historical-inr/user_1
 
-Response
+- **Response:**
+```json
 {
   "user_id": "user_1",
   "history": {
@@ -66,12 +66,15 @@ Response
     "2025-12-16": 1125.50
   }
 }
+```
 
-4.GET /stats/{userId}
 
-Request: /stats/user_1
+### 4. GET /stats/`{userId}`
 
-Response :
+**Request:** /stats/user_1
+
+- **Response:**
+```json
 {
   "user_id": "user_1",
   "today_rewards": {
@@ -79,33 +82,29 @@ Response :
   },
   "current_portfolio_inr": 1839.28
 }
+```
 
+### 5. GET /portfolio/{userId} (Optional / Bonus)
 
-5️ GET /portfolio/{userId} (Optional / Bonus)
+**Request:** /portfolio/user_1
 
-Request :
+- **Response:**
+ ```json
 {
   "user_id": "user_1",
   "portfolio": {
     "RELIANCE": 1.25,
-    "TCS": 2.0
+    "TCS": 2.0,
+    "INFY": 0.75
   },
-  "total_inr": 2950.50
+  "total_inr": 6420.58
 }
+```
 
-Response
-{
-  "user_id": "user_1",
-  "portfolio": {
-    "RELIANCE": 1.25,
-    "TCS": 2.0
-  },
-  "total_inr": 2950.50
-}
+---
 
-
-Database Schema
-
+### Database Schema
+**reward_events**
 | Column       | Type          | Notes                       |
 | ------------ | ------------- | --------------------------- |
 | id           | UUID (PK)     | Primary key                 |
@@ -116,10 +115,9 @@ Database Schema
 | rewarded_at  | TIMESTAMP     | When reward happened        |
 | created_at   | TIMESTAMP     | Auto-created                |
 
+---
 
-ledger_entries
-
-
+**ledger_entries**
 | Column          | Type          | Notes                               |
 | --------------- | ------------- | ----------------------------------- |
 | id              | UUID (PK)     |                                     |
@@ -132,36 +130,44 @@ ledger_entries
 | created_at      | TIMESTAMP     |                                     |
 
 
+---
+---
 
 
-Edge Cases & Scaling
+### Edge Cases & Scaling
 
-Handled:
+**Handled:**
 
-Duplicate rewards → checked via event_id
+- Duplicate rewards → checked via event_id
 
-Rounding errors → INR rounded to 2 decimals
+- Rounding errors → INR rounded to 2 decimals
 
-Price API downtime → uses last stored price
+- Price API downtime → uses last stored price
 
-Not implemented yet (optional / future):
+**Not implemented yet (optional / future):**
 
-Refunds / adjustments → negative ledger entries
+- Refunds / adjustments → negative ledger entries
 
-Stock splits / mergers → adjustment logic needed
+- Stock splits / mergers → adjustment logic needed
 
+**Scaling considerations:**
 
+- Use indexes on user_id, rewarded_at, stock_symbol
 
-Scaling considerations:
+- Background job to fetch hourly stock prices
 
-Use indexes on user_id, rewarded_at, stock_symbol
+- Cache latest stock prices for fast computation
 
-Background job to fetch hourly stock prices
-
-Cache latest stock prices for fast computation
-
-Ledger table ensures auditability and double-entry compliance
+- Ledger table ensures auditability and double-entry compliance
 
 
-## Run
-go run main.go
+
+### Project Setup
+
+- update the .env file with you DB credentials
+- Initialize PostgreSQL database assignment.
+- Run the server with
+-  bash ```go run main.go ``` 
+- Import the Postman collection to test all APIs.
+
+
